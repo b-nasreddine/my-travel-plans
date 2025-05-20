@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('add-destination-form');
     const input = document.getElementById('destination-input');
@@ -5,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggle = document.getElementById('dark-mode-toggle');
 
     function addDestination(name) {
+
         if (!name) return;
         const div = document.createElement('div');
         div.className = 'destination';
@@ -38,11 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
             container.innerHTML = '';
             list.forEach(addDestination);
         });
+
         input.value = '';
     });
 
     toggle.addEventListener('click', () => {
         document.body.classList.toggle('dark');
         localStorage.setItem('dark', document.body.classList.contains('dark'));
+
     });
 });

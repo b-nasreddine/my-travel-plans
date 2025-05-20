@@ -1,5 +1,6 @@
 # Travel Destinations
 
+
 A small web application to manage places I'd like to visit. It now includes a lightweight Node.js backend for storing destinations.
 
 ## Features
