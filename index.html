@@ -5,23 +5,19 @@
     <title>Travels</title>
     <meta name="description" content="">
     <link rel="stylesheet" href="css/app.css">
+    <script defer src="js/app.js"></script>
 </head>
 <body>
-
     <div class="container">
-        <div class="destination-container">
-            <div class="destination" id="florida">
-                <h2>Florida</h2>
-            </div>
-
-            <div class="destination" id="paris">
-                <h2>Paris</h2>
-            </div>
-            <div class="destination" id="dakhla">
-                <h2>Dakhla</h2>
-            </div>
+        <h1>Travel Destinations</h1>
+        <div class="controls">
+            <form id="add-destination-form">
+                <input id="destination-input" type="text" placeholder="Add destination" required>
+                <button type="submit">Add</button>
+            </form>
+            <button id="dark-mode-toggle" type="button">Toggle Dark Mode</button>
         </div>
+        <div class="destination-container"></div>
     </div>
-
 </body>
 </html>
