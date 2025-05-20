@@ -5,10 +5,18 @@
     <title>Travels</title>
     <meta name="description" content="">
     <link rel="stylesheet" href="css/app.css">
+    <script defer src="js/app.js"></script>
 </head>
 <body>
-
     <div class="container">
+        <h1>Travel Destinations</h1>
+        <div class="controls">
+            <form id="add-destination-form">
+                <input id="destination-input" type="text" placeholder="Add destination" required>
+                <button type="submit">Add</button>
+            </form>
+            <button id="dark-mode-toggle" type="button">Toggle Dark Mode</button>
+        </div>
         <div class="destination-container">
             <div class="destination" id="florida">
                 <h2>Florida</h2>

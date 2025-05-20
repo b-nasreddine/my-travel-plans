@@ -11,6 +11,7 @@ html {
 
 body {
     display: flex;
+    flex-direction: column;
     margin: 0;
     height: 100%;
 }
@@ -19,6 +20,22 @@ body {
     margin: auto;
     padding: 1em;
     width: 80%;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.controls input {
+    flex: 1;
+    padding: 0.5em;
+    margin-right: 0.5em;
+}
+
+.controls button {
+    padding: 0.5em 1em;
 }
 
 .destination-container {
@@ -44,11 +61,24 @@ body {
     transform: rotate(0deg);
 }
 
+h1 {
+    text-align: center;
+}
+
 h2 {
     margin: 0;
     transform: rotate(-45deg);
     transition: transform 0.5s;
     text-shadow: 0 0 5px #01579b;
+}
+
+body.dark {
+    background-color: #222;
+    color: #eee;
+}
+
+body.dark .destination {
+    box-shadow: 0 1px 9px 0 rgba(255, 255, 255, 0.2);
 }
 
 #florida {
