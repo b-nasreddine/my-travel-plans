@@ -1,4 +1,3 @@
-// App functionality: add destinations and toggle dark mode
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('add-destination-form');
@@ -6,7 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector('.destination-container');
     const toggle = document.getElementById('dark-mode-toggle');
 
-    function addDestination(name, save = true) {
+    function addDestination(name) {
+
         if (!name) return;
         const div = document.createElement('div');
         div.className = 'destination';
@@ -14,23 +14,39 @@ document.addEventListener('DOMContentLoaded', () => {
         h2.textContent = name;
         div.appendChild(h2);
         container.appendChild(div);
-        if (save) {
-            const items = JSON.parse(localStorage.getItem('destinations') || '[]');
-            items.push(name);
-            localStorage.setItem('destinations', JSON.stringify(items));
-        }
     }
 
-    const saved = JSON.parse(localStorage.getItem('destinations') || '[]');
-    saved.forEach(name => addDestination(name, false));
+    // load dark mode preference
+    if (localStorage.getItem('dark') === 'true') {
+        document.body.classList.add('dark');
+    }
+
+    // fetch existing destinations
+    fetch('/api/destinations')
+        .then(res => res.json())
+        .then(list => list.forEach(addDestination));
 
     form.addEventListener('submit', e => {
         e.preventDefault();
-        addDestination(input.value.trim());
+        const name = input.value.trim();
+        if (!name) return;
+        fetch('/api/destinations', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name })
+        })
+        .then(res => res.json())
+        .then(list => {
+            container.innerHTML = '';
+            list.forEach(addDestination);
+        });
+
         input.value = '';
     });
 
     toggle.addEventListener('click', () => {
         document.body.classList.toggle('dark');
+        localStorage.setItem('dark', document.body.classList.contains('dark'));
+
     });
 });
